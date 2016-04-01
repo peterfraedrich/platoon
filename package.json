@@ -1,0 +1,19 @@
+{
+  "name": "platoon",
+  "version": "0.0.1",
+  "description": "Platoon is a cluster manager and orchestrator",
+  "main": "platoon.js",
+  "scripts": {
+    "test": "nodemon platoon.js".
+    "start": "/usr/bin/node /platoon/platoon.js
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/peterfraedrich/platoon.git"
+  },
+  "author": "Peter Fraedrich",
+  "license": "None",
+  "bugs": {
+    "url": "https://github.com/peterfraedrich/platoon/issues"
+  }
+}
