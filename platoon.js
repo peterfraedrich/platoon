@@ -50,5 +50,5 @@ var allowCrossDomain = function(req, res, next) {
 
 ////////////////////////////////////////////////////////// SERVER
 app.listen(gc.global.api_port, function () {
-    console.log('Healthcheck service listening on port ' + gc.global.port);
+    console.log('Platoon leader listening on port ' + gc.global.port);
 });
