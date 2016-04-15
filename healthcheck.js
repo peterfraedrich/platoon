@@ -58,7 +58,11 @@ var sleeper = function (stime, callback) {
 
 var get_healthcheck = function (host, callback) {
     try {
-        request.get('http://' + host.ip + ':' + gc.agent.port + '/healthcheck', function (err, res, body) {
+        options = {
+            url : 'http://' + host.ip + ':' + gc.agent.port + '/healthcheck',
+            forever : false
+        }
+        request.get(options, function (err, res, body) {
             return callback(null, body)
         })
     } catch (e) {
@@ -70,10 +74,10 @@ var get_last_checkin = function (svc, callback) {
     var dbase = mongo(gc.db.url + '/' + gc.platoon.region, [gc.platoon.cluster_id])
     dbase.collection(gc.platoon.cluster_id).find({ "ip" : svc.ip}, function (err, data) {
         if (!err) {
-            dbase.close()
+            //dbase.close()
             return callback(null, data)
         } else {
-            dbase.close()
+            //dbase.close()
             return callback('error fetching ip from DB', null)
         }
     })
@@ -90,17 +94,22 @@ var db_update = function (data, callback) {
      var dbase = mongo(gc.db.url + '/' + gc.platoon.region, [gc.platoon.cluster_id])
      dbase.collection(gc.platoon.cluster_id).save({ ip : data.ip }, { upsert : true },  function (err, data) {
         if (err) {
-            db.close()
+            //db.close()
             return callback(err)
         } else {
-            db.close()
+            //db.close()
             return callback(null)
         }
      })
 }
 
 var inspect_data = function (strdata, callback) {
-    var data = JSON.parse(strdata)
+    try {
+        var data = JSON.parse(strdata)
+    } catch (e) {
+        log(e)
+        return callback(e)
+    }
     var dbase = mongo(gc.db.url + '/' + gc.platoon.region, [gc.platoon.cluster_id])
     dbase.collection(gc.platoon.cluster_id).find({ ip : data.ip }).toArray(function (err, olddata) {
         if (err) {
@@ -109,16 +118,21 @@ var inspect_data = function (strdata, callback) {
         } else {
             olddata = olddata[0]
             for (s = 0; s < data.services.length; s++) {
-                if (data.services[s].status != olddata.services[s].status) {
-                    notify(olddata.services[s].status, data.services[s].status, data.hostname, data.ip, data.services[s].name, function (err) {
-                        if (err) {
-                            log(err)
-                        }
-                    })
+                try {
+                    if (data.services[s].status != olddata.services[s].status) {
+                        notify(olddata.services[s].status, data.services[s].status, data.hostname, data.ip, data.services[s].name, function (err) {
+                            if (err) {
+                                log(err)
+                            }
+                        })
+                    }
+                } catch (e) {
+                    // if old status doesn't exist (ie, new service) go to the next iteration
+                    continue
                 }
             }
             dbase.collection(gc.platoon.cluster_id).update({ ip : data.ip }, data, { $upsert : true }, function (err) {
-                dbase.close()
+                //dbase.close()
                 if (err) {
                     log(err)
                     return callback(err)
@@ -127,9 +141,7 @@ var inspect_data = function (strdata, callback) {
                 }
             })
         }
-    })
-    
-         
+    })   
 }
 
 log('Started cluster health check loop in ' + (process.hrtime(startup_start)[1] / 1000000).toFixed(2) + 'ms')
@@ -140,10 +152,10 @@ async.forever(
         var dbase = mongo(gc.db.url + '/' + gc.platoon.region, [gc.platoon.cluster_id])
         dbase.collection(gc.platoon.cluster_id).find(function (err, data) {
             if (err) {
-                dbase.close()
+                //dbase.close()
                 log(err)
             } else {
-                dbase.close()
+                //dbase.close()
                 for (i = 0; i < data.length; i++) {
                     get_healthcheck(data[i], function (err, data) {
                         if (err) {

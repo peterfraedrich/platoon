@@ -1,0 +1,406 @@
+Thu Apr 14 2016 23:20:29 GMT+0000 (UTC) :: Started healthcheck service in 4.34ms
+Thu Apr 14 2016 23:20:30 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:20:30 GMT+0000 (UTC) :: Platoon spooled up in 113.60ms
+Thu Apr 14 2016 23:20:30 GMT+0000 (UTC) :: Started cluster health check loop in 0.66ms
+Thu Apr 14 2016 23:20:30 GMT+0000 (UTC) :: Health check loop took 128.83 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:20:35 GMT+0000 (UTC) :: Health check loop took 90.03 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:20:40 GMT+0000 (UTC) :: Health check loop took 85.32 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:20:46 GMT+0000 (UTC) :: Health check loop took 87.48 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:20:51 GMT+0000 (UTC) :: Health check loop took 83.93 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:20:56 GMT+0000 (UTC) :: Health check loop took 74.07 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:21:01 GMT+0000 (UTC) :: Health check loop took 67.87 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:21:06 GMT+0000 (UTC) :: Health check loop took 75.09 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:21:11 GMT+0000 (UTC) :: Health check loop took 70.10 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:21:16 GMT+0000 (UTC) :: Health check loop took 100.00 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:21:21 GMT+0000 (UTC) :: Health check loop took 76.32 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:21:26 GMT+0000 (UTC) :: Health check loop took 72.76 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:21:31 GMT+0000 (UTC) :: Health check loop took 96.03 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:21:36 GMT+0000 (UTC) :: Health check loop took 76.82 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:21:41 GMT+0000 (UTC) :: Health check loop took 71.18 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:21:47 GMT+0000 (UTC) :: Health check loop took 59.88 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:21:52 GMT+0000 (UTC) :: Health check loop took 70.76 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:21:57 GMT+0000 (UTC) :: Health check loop took 67.65 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:22:02 GMT+0000 (UTC) :: Health check loop took 81.70 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:22:07 GMT+0000 (UTC) :: Health check loop took 77.60 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:22:12 GMT+0000 (UTC) :: Health check loop took 78.42 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:22:17 GMT+0000 (UTC) :: Health check loop took 69.68 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:22:22 GMT+0000 (UTC) :: Health check loop took 81.24 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:22:27 GMT+0000 (UTC) :: Health check loop took 59.43 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:22:32 GMT+0000 (UTC) :: Health check loop took 62.30 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:22:37 GMT+0000 (UTC) :: Health check loop took 64.70 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:22:42 GMT+0000 (UTC) :: Health check loop took 77.55 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:22:47 GMT+0000 (UTC) :: Health check loop took 62.17 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:22:52 GMT+0000 (UTC) :: Health check loop took 70.15 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:22:58 GMT+0000 (UTC) :: Health check loop took 76.11 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:23:03 GMT+0000 (UTC) :: Health check loop took 69.00 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:23:08 GMT+0000 (UTC) :: Health check loop took 75.73 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:23:13 GMT+0000 (UTC) :: Health check loop took 74.65 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:23:18 GMT+0000 (UTC) :: Health check loop took 78.39 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:23:23 GMT+0000 (UTC) :: Health check loop took 71.45 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:23:28 GMT+0000 (UTC) :: Health check loop took 75.10 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:23:33 GMT+0000 (UTC) :: Health check loop took 79.71 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:23:38 GMT+0000 (UTC) :: Health check loop took 85.50 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:23:43 GMT+0000 (UTC) :: Health check loop took 73.79 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:23:48 GMT+0000 (UTC) :: Health check loop took 82.15 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:23:53 GMT+0000 (UTC) :: Health check loop took 105.41 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:23:58 GMT+0000 (UTC) :: Health check loop took 70.21 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:24:04 GMT+0000 (UTC) :: Health check loop took 67.94 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:24:09 GMT+0000 (UTC) :: Health check loop took 54.37 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:24:14 GMT+0000 (UTC) :: Health check loop took 66.30 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:24:19 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:24:19 GMT+0000 (UTC) :: Health check loop took 38.68 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:24:24 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:24:24 GMT+0000 (UTC) :: Health check loop took 40.04 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:24:29 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:24:29 GMT+0000 (UTC) :: Health check loop took 31.57 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:24:34 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:24:34 GMT+0000 (UTC) :: Health check loop took 37.73 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:24:39 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:24:39 GMT+0000 (UTC) :: Health check loop took 28.68 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:24:44 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:24:44 GMT+0000 (UTC) :: Health check loop took 28.15 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:24:49 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:24:49 GMT+0000 (UTC) :: Health check loop took 26.35 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:24:54 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:24:54 GMT+0000 (UTC) :: Health check loop took 27.65 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:24:59 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:24:59 GMT+0000 (UTC) :: Health check loop took 33.65 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:25:04 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:25:04 GMT+0000 (UTC) :: Health check loop took 27.87 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:25:09 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:25:09 GMT+0000 (UTC) :: Health check loop took 43.96 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:25:14 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:25:14 GMT+0000 (UTC) :: Health check loop took 33.37 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:25:19 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:25:19 GMT+0000 (UTC) :: Health check loop took 39.54 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:25:24 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:25:24 GMT+0000 (UTC) :: Health check loop took 35.41 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:25:29 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:25:29 GMT+0000 (UTC) :: Health check loop took 44.98 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:25:34 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:25:34 GMT+0000 (UTC) :: Health check loop took 33.53 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:25:39 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:25:39 GMT+0000 (UTC) :: Health check loop took 44.41 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:25:44 GMT+0000 (UTC) :: Health check loop took 79.36 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:25:49 GMT+0000 (UTC) :: Health check loop took 65.00 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:25:54 GMT+0000 (UTC) :: Health check loop took 59.48 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:26:00 GMT+0000 (UTC) :: Health check loop took 60.17 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:26:05 GMT+0000 (UTC) :: Health check loop took 67.97 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:26:10 GMT+0000 (UTC) :: Health check loop took 63.60 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:26:15 GMT+0000 (UTC) :: Health check loop took 63.49 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:26:20 GMT+0000 (UTC) :: Health check loop took 66.55 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:26:25 GMT+0000 (UTC) :: Health check loop took 61.80 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:26:30 GMT+0000 (UTC) :: Health check loop took 60.04 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:26:35 GMT+0000 (UTC) :: Health check loop took 62.31 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:26:40 GMT+0000 (UTC) :: Health check loop took 64.28 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:26:45 GMT+0000 (UTC) :: Health check loop took 61.68 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:26:50 GMT+0000 (UTC) :: Health check loop took 88.93 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:26:55 GMT+0000 (UTC) :: Health check loop took 73.13 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:27:00 GMT+0000 (UTC) :: Health check loop took 79.01 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:27:05 GMT+0000 (UTC) :: Health check loop took 71.37 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:27:11 GMT+0000 (UTC) :: Health check loop took 77.67 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:27:16 GMT+0000 (UTC) :: Health check loop took 78.26 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:27:21 GMT+0000 (UTC) :: Health check loop took 68.10 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:27:26 GMT+0000 (UTC) :: Health check loop took 66.73 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:27:31 GMT+0000 (UTC) :: Health check loop took 61.93 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:27:36 GMT+0000 (UTC) :: Health check loop took 62.19 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:27:41 GMT+0000 (UTC) :: Health check loop took 67.03 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:27:46 GMT+0000 (UTC) :: Health check loop took 67.92 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:27:51 GMT+0000 (UTC) :: Health check loop took 64.17 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:27:56 GMT+0000 (UTC) :: Health check loop took 64.31 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:28:01 GMT+0000 (UTC) :: Health check loop took 64.34 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:28:06 GMT+0000 (UTC) :: Health check loop took 80.77 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:28:11 GMT+0000 (UTC) :: Health check loop took 64.75 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:28:16 GMT+0000 (UTC) :: Health check loop took 65.46 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:28:21 GMT+0000 (UTC) :: Health check loop took 58.01 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:28:27 GMT+0000 (UTC) :: Health check loop took 79.44 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:28:32 GMT+0000 (UTC) :: Health check loop took 69.77 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:28:37 GMT+0000 (UTC) :: Health check loop took 67.24 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:28:42 GMT+0000 (UTC) :: Health check loop took 73.49 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:28:47 GMT+0000 (UTC) :: Health check loop took 96.81 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:28:52 GMT+0000 (UTC) :: Health check loop took 100.05 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:28:57 GMT+0000 (UTC) :: Health check loop took 61.30 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:29:02 GMT+0000 (UTC) :: Health check loop took 67.66 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:29:07 GMT+0000 (UTC) :: Health check loop took 57.10 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:29:12 GMT+0000 (UTC) :: Health check loop took 63.46 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:29:17 GMT+0000 (UTC) :: Health check loop took 67.36 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:29:22 GMT+0000 (UTC) :: Health check loop took 109.00 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:29:27 GMT+0000 (UTC) :: Health check loop took 65.83 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:29:33 GMT+0000 (UTC) :: Health check loop took 69.77 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:29:38 GMT+0000 (UTC) :: Health check loop took 59.59 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:29:43 GMT+0000 (UTC) :: Health check loop took 80.74 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:29:48 GMT+0000 (UTC) :: Health check loop took 60.39 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:29:53 GMT+0000 (UTC) :: Health check loop took 67.02 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:29:58 GMT+0000 (UTC) :: Health check loop took 63.90 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:30:03 GMT+0000 (UTC) :: Health check loop took 80.48 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:30:08 GMT+0000 (UTC) :: Health check loop took 60.59 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:30:13 GMT+0000 (UTC) :: Health check loop took 63.58 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:30:18 GMT+0000 (UTC) :: Health check loop took 61.75 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:30:23 GMT+0000 (UTC) :: Health check loop took 61.24 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:30:28 GMT+0000 (UTC) :: Health check loop took 61.95 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:30:33 GMT+0000 (UTC) :: Health check loop took 62.41 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:30:38 GMT+0000 (UTC) :: Health check loop took 62.77 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:30:43 GMT+0000 (UTC) :: Health check loop took 67.83 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:30:49 GMT+0000 (UTC) :: Health check loop took 69.14 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:30:54 GMT+0000 (UTC) :: Health check loop took 80.60 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:30:59 GMT+0000 (UTC) :: Health check loop took 73.78 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:31:04 GMT+0000 (UTC) :: Health check loop took 81.36 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:31:09 GMT+0000 (UTC) :: Health check loop took 78.83 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:31:14 GMT+0000 (UTC) :: Health check loop took 65.35 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:31:19 GMT+0000 (UTC) :: Health check loop took 66.65 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:31:24 GMT+0000 (UTC) :: Health check loop took 67.38 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:31:29 GMT+0000 (UTC) :: Health check loop took 64.82 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:31:34 GMT+0000 (UTC) :: Health check loop took 80.91 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:31:39 GMT+0000 (UTC) :: Health check loop took 65.65 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:31:44 GMT+0000 (UTC) :: Health check loop took 70.76 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:31:49 GMT+0000 (UTC) :: Health check loop took 68.19 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:31:54 GMT+0000 (UTC) :: Health check loop took 62.85 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:32:00 GMT+0000 (UTC) :: Health check loop took 60.77 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:32:05 GMT+0000 (UTC) :: Health check loop took 61.45 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:32:10 GMT+0000 (UTC) :: Health check loop took 66.16 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:32:15 GMT+0000 (UTC) :: Health check loop took 73.80 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:32:20 GMT+0000 (UTC) :: Health check loop took 60.84 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:32:25 GMT+0000 (UTC) :: Health check loop took 62.61 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:32:30 GMT+0000 (UTC) :: Health check loop took 66.42 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:32:35 GMT+0000 (UTC) :: Health check loop took 62.29 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:32:40 GMT+0000 (UTC) :: Health check loop took 64.20 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:32:45 GMT+0000 (UTC) :: Health check loop took 81.90 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:32:50 GMT+0000 (UTC) :: Health check loop took 79.83 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:32:55 GMT+0000 (UTC) :: Health check loop took 69.28 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:33:00 GMT+0000 (UTC) :: Health check loop took 69.76 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:33:05 GMT+0000 (UTC) :: Health check loop took 76.61 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:33:11 GMT+0000 (UTC) :: Health check loop took 70.41 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:33:16 GMT+0000 (UTC) :: Health check loop took 79.02 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:33:21 GMT+0000 (UTC) :: Health check loop took 94.19 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:33:26 GMT+0000 (UTC) :: Health check loop took 120.00 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:33:31 GMT+0000 (UTC) :: Health check loop took 73.12 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:33:36 GMT+0000 (UTC) :: Health check loop took 62.94 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:33:41 GMT+0000 (UTC) :: Health check loop took 67.08 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:33:46 GMT+0000 (UTC) :: Health check loop took 64.49 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:33:51 GMT+0000 (UTC) :: Health check loop took 67.51 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:33:56 GMT+0000 (UTC) :: Health check loop took 72.08 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:34:01 GMT+0000 (UTC) :: Health check loop took 66.08 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:34:06 GMT+0000 (UTC) :: Health check loop took 64.54 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:34:11 GMT+0000 (UTC) :: Health check loop took 76.65 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:34:17 GMT+0000 (UTC) :: Health check loop took 66.25 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:34:22 GMT+0000 (UTC) :: Health check loop took 60.03 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:34:27 GMT+0000 (UTC) :: Health check loop took 64.94 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:34:32 GMT+0000 (UTC) :: Health check loop took 86.09 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:34:37 GMT+0000 (UTC) :: Health check loop took 113.38 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:34:42 GMT+0000 (UTC) :: Health check loop took 62.10 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:34:47 GMT+0000 (UTC) :: Health check loop took 62.04 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:34:52 GMT+0000 (UTC) :: Health check loop took 68.76 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:34:57 GMT+0000 (UTC) :: Health check loop took 64.05 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:35:02 GMT+0000 (UTC) :: Health check loop took 76.18 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:35:07 GMT+0000 (UTC) :: Health check loop took 70.39 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:35:12 GMT+0000 (UTC) :: Health check loop took 72.14 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:35:17 GMT+0000 (UTC) :: Health check loop took 74.48 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:35:23 GMT+0000 (UTC) :: Health check loop took 87.79 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:35:28 GMT+0000 (UTC) :: Health check loop took 71.96 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:35:33 GMT+0000 (UTC) :: Health check loop took 83.24 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:35:38 GMT+0000 (UTC) :: Health check loop took 61.49 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:35:43 GMT+0000 (UTC) :: Health check loop took 101.32 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:35:48 GMT+0000 (UTC) :: Health check loop took 77.54 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:35:53 GMT+0000 (UTC) :: Health check loop took 121.15 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:35:58 GMT+0000 (UTC) :: Health check loop took 62.29 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:36:03 GMT+0000 (UTC) :: Health check loop took 68.12 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:36:08 GMT+0000 (UTC) :: Health check loop took 58.41 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:36:13 GMT+0000 (UTC) :: Health check loop took 67.05 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:36:18 GMT+0000 (UTC) :: Health check loop took 69.09 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:36:23 GMT+0000 (UTC) :: Health check loop took 61.45 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:36:28 GMT+0000 (UTC) :: Health check loop took 74.85 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:36:34 GMT+0000 (UTC) :: Health check loop took 65.72 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:36:39 GMT+0000 (UTC) :: Health check loop took 81.51 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:36:44 GMT+0000 (UTC) :: Health check loop took 70.64 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:36:49 GMT+0000 (UTC) :: Health check loop took 56.99 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:36:54 GMT+0000 (UTC) :: Health check loop took 65.34 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:36:59 GMT+0000 (UTC) :: Health check loop took 67.30 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:37:04 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:04 GMT+0000 (UTC) :: Health check loop took 26.98 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:37:09 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:09 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:09 GMT+0000 (UTC) :: Health check loop took 16.56 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:37:14 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:14 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:14 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:14 GMT+0000 (UTC) :: Health check loop took 22.68 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:37:19 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:19 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:19 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:19 GMT+0000 (UTC) :: Health check loop took 19.98 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:37:24 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:24 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:24 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:24 GMT+0000 (UTC) :: Health check loop took 17.00 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:37:29 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:29 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:29 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:29 GMT+0000 (UTC) :: Health check loop took 16.34 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:37:34 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:34 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:34 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:34 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:34 GMT+0000 (UTC) :: Health check loop took 33.45 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:37:39 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:39 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:39 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:39 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:39 GMT+0000 (UTC) :: Health check loop took 18.16 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:37:44 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:44 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:44 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:44 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:44 GMT+0000 (UTC) :: Health check loop took 18.64 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:37:49 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:49 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:49 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:49 GMT+0000 (UTC) :: SyntaxError: Unexpected token u
+Thu Apr 14 2016 23:37:49 GMT+0000 (UTC) :: Health check loop took 22.39 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:38:39 GMT+0000 (UTC) :: Started healthcheck service in 4.66ms
+Thu Apr 14 2016 23:38:39 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:38:39 GMT+0000 (UTC) :: Platoon spooled up in 82.87ms
+Thu Apr 14 2016 23:38:39 GMT+0000 (UTC) :: Started cluster health check loop in 0.96ms
+Thu Apr 14 2016 23:38:40 GMT+0000 (UTC) :: Health check loop took 158.01 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:38:45 GMT+0000 (UTC) :: Health check loop took 105.74 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:38:50 GMT+0000 (UTC) :: Health check loop took 75.13 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:38:55 GMT+0000 (UTC) :: Health check loop took 95.96 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:39:00 GMT+0000 (UTC) :: Health check loop took 85.83 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:39:05 GMT+0000 (UTC) :: Health check loop took 66.50 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:39:10 GMT+0000 (UTC) :: Health check loop took 83.13 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:39:15 GMT+0000 (UTC) :: Health check loop took 69.29 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:39:20 GMT+0000 (UTC) :: Health check loop took 65.10 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:39:25 GMT+0000 (UTC) :: Health check loop took 68.01 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:39:30 GMT+0000 (UTC) :: Health check loop took 73.54 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:39:36 GMT+0000 (UTC) :: Health check loop took 77.84 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:39:41 GMT+0000 (UTC) :: Health check loop took 70.65 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:39:46 GMT+0000 (UTC) :: Health check loop took 93.72 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:39:51 GMT+0000 (UTC) :: Health check loop took 66.08 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:39:56 GMT+0000 (UTC) :: Health check loop took 62.54 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:40:01 GMT+0000 (UTC) :: Health check loop took 73.80 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:40:06 GMT+0000 (UTC) :: Health check loop took 94.47 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:40:11 GMT+0000 (UTC) :: Health check loop took 89.35 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:40:16 GMT+0000 (UTC) :: Health check loop took 75.80 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:40:21 GMT+0000 (UTC) :: Health check loop took 79.51 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:40:26 GMT+0000 (UTC) :: Health check loop took 86.42 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:40:31 GMT+0000 (UTC) :: Started healthcheck service in 4.81ms
+Thu Apr 14 2016 23:40:31 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:40:31 GMT+0000 (UTC) :: Platoon spooled up in 93.65ms
+Thu Apr 14 2016 23:40:32 GMT+0000 (UTC) :: Started cluster health check loop in 0.82ms
+Thu Apr 14 2016 23:40:32 GMT+0000 (UTC) :: Health check loop took 115.21 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:40:37 GMT+0000 (UTC) :: Health check loop took 120.86 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:40:42 GMT+0000 (UTC) :: Health check loop took 84.81 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:40:47 GMT+0000 (UTC) :: Health check loop took 88.59 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:40:52 GMT+0000 (UTC) :: Health check loop took 159.27 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:40:57 GMT+0000 (UTC) :: Health check loop took 60.77 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:41:02 GMT+0000 (UTC) :: Health check loop took 72.88 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:41:08 GMT+0000 (UTC) :: Health check loop took 65.49 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:41:13 GMT+0000 (UTC) :: Health check loop took 60.72 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:41:18 GMT+0000 (UTC) :: Health check loop took 70.34 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:41:23 GMT+0000 (UTC) :: Health check loop took 68.74 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:41:28 GMT+0000 (UTC) :: Health check loop took 64.22 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:41:33 GMT+0000 (UTC) :: Health check loop took 69.72 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:41:38 GMT+0000 (UTC) :: Health check loop took 79.63 ms to run, sleeping for 5.00s.
+Thu Apr 14 2016 23:41:40 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:41:40 GMT+0000 (UTC) :: Platoon spooled up in 93.48ms
+Thu Apr 14 2016 23:42:07 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:42:07 GMT+0000 (UTC) :: Platoon spooled up in 80.38ms
+Thu Apr 14 2016 23:43:59 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:43:59 GMT+0000 (UTC) :: Platoon spooled up in 88.97ms
+Thu Apr 14 2016 23:44:08 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:44:08 GMT+0000 (UTC) :: Platoon spooled up in 86.29ms
+Thu Apr 14 2016 23:44:29 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:44:29 GMT+0000 (UTC) :: Platoon spooled up in 93.59ms
+Thu Apr 14 2016 23:44:48 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:44:48 GMT+0000 (UTC) :: Platoon spooled up in 100.65ms
+Thu Apr 14 2016 23:44:50 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:44:50 GMT+0000 (UTC) :: Platoon spooled up in 97.22ms
+Thu Apr 14 2016 23:44:58 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:44:58 GMT+0000 (UTC) :: Platoon spooled up in 85.18ms
+Thu Apr 14 2016 23:47:09 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:47:09 GMT+0000 (UTC) :: Platoon spooled up in 89.52ms
+Thu Apr 14 2016 23:51:20 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:51:20 GMT+0000 (UTC) :: Platoon spooled up in 88.85ms
+Thu Apr 14 2016 23:51:44 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:51:44 GMT+0000 (UTC) :: Platoon spooled up in 85.90ms
+Thu Apr 14 2016 23:53:35 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:53:35 GMT+0000 (UTC) :: Platoon spooled up in 94.13ms
+Thu Apr 14 2016 23:55:58 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:55:58 GMT+0000 (UTC) :: Platoon spooled up in 86.86ms
+Thu Apr 14 2016 23:56:57 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:56:57 GMT+0000 (UTC) :: Platoon spooled up in 83.05ms
+Thu Apr 14 2016 23:57:05 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:57:05 GMT+0000 (UTC) :: Platoon spooled up in 94.10ms
+Thu Apr 14 2016 23:57:13 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:57:13 GMT+0000 (UTC) :: Platoon spooled up in 97.31ms
+Thu Apr 14 2016 23:58:22 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:58:22 GMT+0000 (UTC) :: Platoon spooled up in 105.85ms
+Thu Apr 14 2016 23:59:08 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:59:08 GMT+0000 (UTC) :: Platoon spooled up in 85.48ms
+Thu Apr 14 2016 23:59:57 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Thu Apr 14 2016 23:59:57 GMT+0000 (UTC) :: Platoon spooled up in 81.17ms
+Fri Apr 15 2016 00:00:41 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Fri Apr 15 2016 00:00:41 GMT+0000 (UTC) :: Platoon spooled up in 79.20ms
+Fri Apr 15 2016 00:02:01 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Fri Apr 15 2016 00:02:01 GMT+0000 (UTC) :: Platoon spooled up in 85.22ms
+Fri Apr 15 2016 00:03:38 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Fri Apr 15 2016 00:03:38 GMT+0000 (UTC) :: Platoon spooled up in 87.65ms
+Fri Apr 15 2016 00:03:54 GMT+0000 (UTC) :: Started healthcheck service in 5.95ms
+Fri Apr 15 2016 00:03:54 GMT+0000 (UTC) :: Platoon leader listening on port 5000
+Fri Apr 15 2016 00:03:54 GMT+0000 (UTC) :: Platoon spooled up in 96.54ms
+Fri Apr 15 2016 00:03:55 GMT+0000 (UTC) :: Started cluster health check loop in 0.95ms
+Fri Apr 15 2016 00:03:55 GMT+0000 (UTC) :: Health check loop took 139.31 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:04:00 GMT+0000 (UTC) :: Health check loop took 83.26 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:04:05 GMT+0000 (UTC) :: Health check loop took 99.35 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:04:10 GMT+0000 (UTC) :: Health check loop took 93.35 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:04:15 GMT+0000 (UTC) :: Health check loop took 84.92 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:04:20 GMT+0000 (UTC) :: Health check loop took 63.36 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:04:25 GMT+0000 (UTC) :: Health check loop took 65.87 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:04:30 GMT+0000 (UTC) :: Health check loop took 78.50 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:04:35 GMT+0000 (UTC) :: Health check loop took 65.03 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:04:41 GMT+0000 (UTC) :: Health check loop took 66.14 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:04:46 GMT+0000 (UTC) :: Health check loop took 75.51 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:04:51 GMT+0000 (UTC) :: Health check loop took 72.42 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:04:56 GMT+0000 (UTC) :: Health check loop took 73.71 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:05:01 GMT+0000 (UTC) :: Health check loop took 105.24 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:05:06 GMT+0000 (UTC) :: Health check loop took 76.48 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:05:11 GMT+0000 (UTC) :: Health check loop took 68.93 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:05:16 GMT+0000 (UTC) :: Health check loop took 60.36 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:05:21 GMT+0000 (UTC) :: Health check loop took 113.59 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:05:26 GMT+0000 (UTC) :: Health check loop took 78.85 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:05:31 GMT+0000 (UTC) :: Health check loop took 69.37 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:05:36 GMT+0000 (UTC) :: Health check loop took 81.99 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:05:41 GMT+0000 (UTC) :: Health check loop took 72.81 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:05:47 GMT+0000 (UTC) :: Health check loop took 77.34 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:05:52 GMT+0000 (UTC) :: Health check loop took 81.89 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:05:57 GMT+0000 (UTC) :: Health check loop took 56.96 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:06:02 GMT+0000 (UTC) :: Health check loop took 58.01 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:06:07 GMT+0000 (UTC) :: Health check loop took 73.33 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:06:12 GMT+0000 (UTC) :: Health check loop took 59.82 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:06:17 GMT+0000 (UTC) :: Health check loop took 72.97 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:06:22 GMT+0000 (UTC) :: Health check loop took 70.26 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:06:27 GMT+0000 (UTC) :: Health check loop took 66.92 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:06:32 GMT+0000 (UTC) :: Health check loop took 57.97 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:06:37 GMT+0000 (UTC) :: Health check loop took 61.54 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:06:42 GMT+0000 (UTC) :: Health check loop took 67.88 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:06:47 GMT+0000 (UTC) :: Health check loop took 60.27 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:06:52 GMT+0000 (UTC) :: Health check loop took 65.99 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:06:57 GMT+0000 (UTC) :: Health check loop took 74.39 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:07:03 GMT+0000 (UTC) :: Health check loop took 70.61 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:07:08 GMT+0000 (UTC) :: Health check loop took 55.36 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:07:13 GMT+0000 (UTC) :: Health check loop took 63.67 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:07:18 GMT+0000 (UTC) :: Health check loop took 75.75 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:07:23 GMT+0000 (UTC) :: Health check loop took 67.74 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:07:28 GMT+0000 (UTC) :: Health check loop took 65.18 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:07:33 GMT+0000 (UTC) :: Health check loop took 84.30 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:07:38 GMT+0000 (UTC) :: Health check loop took 60.73 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:07:43 GMT+0000 (UTC) :: Health check loop took 62.68 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:07:48 GMT+0000 (UTC) :: Health check loop took 59.30 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:07:53 GMT+0000 (UTC) :: Health check loop took 76.60 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:07:58 GMT+0000 (UTC) :: Health check loop took 66.86 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:08:03 GMT+0000 (UTC) :: Health check loop took 60.30 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:08:08 GMT+0000 (UTC) :: Health check loop took 58.47 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:08:13 GMT+0000 (UTC) :: Health check loop took 62.21 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:08:19 GMT+0000 (UTC) :: Health check loop took 69.46 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:08:24 GMT+0000 (UTC) :: Health check loop took 61.64 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:08:29 GMT+0000 (UTC) :: Health check loop took 60.46 ms to run, sleeping for 5.00s.
+Fri Apr 15 2016 00:08:34 GMT+0000 (UTC) :: Health check loop took 66.88 ms to run, sleeping for 5.00s.

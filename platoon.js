@@ -1,5 +1,12 @@
 // platoon.js
 
+/*
+    TODO:
+    switch from MONGOJS to MONGODB driver, this will allow for consistent db socket open/closing
+
+*/
+
+
 ////////////////////////////////////////////////////////// DEPS
 var application_root = __dirname,
     express = require('express'),
@@ -10,19 +17,21 @@ var application_root = __dirname,
     bodyParser = require('body-parser'),
     path = require('path'),
     fs = require('fs'),
+    os = require('os'),
     methodOverride = require('method-override'),
     request = require('request'),
-    cmd = require('child_process').exec,
     thread = require('child_process').spawn,
     mongo = require('mongojs'),
     process = require('process'),
-    sleep = require('sleep')
+    sleep = require('sleep'),
+    cmd = require('exec-sync')
 
 ////////////////////////////////////////////////////////// SETUP
 var startup_start = process.hrtime() // start the spool up timer
 var app = express();
 var gc = ini.parse(fs.readFileSync('platoon.conf', 'utf-8'))
 dbase = mongo(gc.db.url + '/' + gc.platoon.region, [gc.platoon.cluster_id])
+cluster_db = mongo(gc.db.url + '/cluster')
 
 ////////////////////////////////////////////////////////// ALLOW XSS / CORS
 var allowCrossDomain = function(req, res, next) {
@@ -80,50 +89,60 @@ var log = function (msg) {
     return
 }
 
-var db = function () {
-    this.checkIn = function (data, gc, callback) {
-        dbase.collection(gc.platoon.cluster_id).update({ ip : data.ip}, data, { upsert : true }, function (err) {
-            if (err) {
-                db.close()
-                log(err)
-                return callback(err)
-            } else {
-                db.close()
-                return callback(null)
-            }
-        })
-    }
-    this.findAll = function (gc, callback) {
-        dbase.collection(gc.platoon.cluster_id).find(function (err, data) {
-            if (err) {
-                db.close()
-                log(err) 
-                return callback(err)
-            } else {
-                db.close()
-                return callback(null, data)
-            }
-        })
+var startup = function (callback) {
+    /*
+        on startup, checks in with the DB and makes sure it exists, if not, it puts itself there.
+        this is for the UI so it knows where all the cluster managers are.
+    */
+    var host_data = {}
+    // get IP
+    host_data.ip = get_ip()
+    host_data.hostname = cmd('hostname')
+    host_data.port = gc.global.port
+    host_data.region = gc.platoon.region
+    host_data.cluster_id = gc.platoon.cluster_id 
+    cluster_db.collection('servers').update({ip: host_data.ip}, host_data, {upsert : true}, function (err) {
+        if (err) {
+            cluster_db.close()
+            return callback(err)
+        } else {
+            cluster_db.close()
+            return callback(null)
+        }
+    })
+}
+
+var get_hostname = function () {
+    cmd('hostname', function (err, stdout) {
+        return stdout.split('\n')[0]
+    })
+}
+
+var get_ip = function () {
+    var ifaces = os.networkInterfaces()
+    for (i = 0; i < Object.keys(ifaces).length; i++) {
+        if (ifaces[Object.keys(ifaces)[i]][0].internal != true && ifaces[Object.keys(ifaces)[i]][0].family == 'IPv4') {
+            return ifaces[Object.keys(ifaces)[i]][0].address
+        }
     }
 }
 
-////////////////////////////////////////////////////////// PUBLIC API
-
-app.get('/status', function (req, res) {
+var get_status = function (callback) {
     var status = {}
     status.members = []
     var ok = 0
     var err = 0
     var down = []
     dbase.collection(gc.platoon.cluster_id).find(function (err, data) {
+        //dbase.close()
         if (err) {
             log(err)
-            dbase.close()
-            res.sendStatus(500)
+            //dbase.close()
+            return callback(err)
         } else {
-            console.log(data)
+            //dbase.close()
             if (data.length < 1) {
-                res.send('cluster has no members. nothing to do.')
+                return callback(null, '{}')
             } else {
                 for (i = 0; i < data.length; i++) {
                     status.members.push(data[i])
@@ -141,22 +160,66 @@ app.get('/status', function (req, res) {
                     }
                 }
                 status.down = down
-                status.pct = (100 - ((down.length / data.length ) * 100)).toFixed(2) + '%'
+                status.pct = (100 - ((down.length / data.length ) * 100))
                 if (down.length == data.length) {
                     status.quorum = false
                 }
-                else if (down.length < data.length && (down.length / data.length) < gc.platoon.quorum) {
+                else if (down.length < data.length && (100 - (down.length / data.length) * 100) <= gc.platoon.quorum) {
                     status.quorum = false
                 } else {
                     status.quorum = true
                 }
+                status.quorum_target = Number(gc.platoon.quorum)
                 status.tot_members = data.length
                 status.down_members = down.length
                 status.svc_ok = ok
                 status.svc_err = err
-                res.send(status)
+                status.region = gc.platoon.region
+                status.cluster_id = gc.platoon.cluster_id
+                return callback(null, status)
             }
         }
+    })
+}
+
+var db = function () {
+    this.checkIn = function (data, gc, callback) {
+        dbase.collection(gc.platoon.cluster_id).update({ ip : data.ip}, data, { upsert : true }, function (err) {
+            if (err) {
+                //dbase.close()
+                log(err)
+                return callback(err)
+            } else {
+                //dbase.close()
+                return callback(null)
+            }
+        })
+    }
+    this.findAll = function (gc, callback) {
+        dbase.collection(gc.platoon.cluster_id).find(function (err, data) {
+            if (err) {
+                //dbase.close()
+                log(err) 
+                return callback(err)
+            } else {
+                //dbase.close()
+                return callback(null, data)
+            }
+        })
+    }
+}
+
+////////////////////////////////////////////////////////// PUBLIC API
+
+app.get('/status', function (req, res) {
+    get_status(function (err, cluster_status) {
+        if (err) {
+            console.log(err)
+            res.send(err)
+        } else {
+            console.log(cluster_status)
+            res.send(cluster_status)
+        }  
     })
 })
 
@@ -188,6 +251,11 @@ app.listen(gc.global.port, function (err) {
     if (err) {
         log(err)
     }
-    log('Platoon leader listening on port ' + gc.global.port)
-    log('Platoon spooled up in ' + (process.hrtime(startup_start)[1] / 1000000).toFixed(2) + 'ms')
+    startup(function (err) {
+        if (err) {
+            log(err)
+        }
+            log('Platoon leader listening on port ' + gc.global.port)
+            log('Platoon spooled up in ' + (process.hrtime(startup_start)[1] / 1000000).toFixed(2) + 'ms')
+    })
 })
