@@ -1,7 +1,7 @@
 // platoon-looper.js
 
 var ini = require('ini'),
-    mongo = require('mongojs'),
+    mongo = require('mongodb').MongoClient,
     http = require('http'),
     bodyParser = require('body-parser'),
     request = require('request'),
@@ -71,111 +71,125 @@ var get_healthcheck = function (host, callback) {
 }
 
 var get_last_checkin = function (svc, callback) {
-    var dbase = mongo(gc.db.url + '/' + gc.platoon.region, [gc.platoon.cluster_id])
-    dbase.collection(gc.platoon.cluster_id).find({ "ip" : svc.ip}, function (err, data) {
-        if (!err) {
-            //dbase.close()
-            return callback(null, data)
-        } else {
-            //dbase.close()
-            return callback('error fetching ip from DB', null)
-        }
+    mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
+        dbase.collection(gc.platoon.cluster_id).find({ "ip" : svc.ip}).toArray(function (err, data) {
+            if (!err) {
+                dbase.close()
+                return callback(null, data)
+            } else {
+                dbase.close()
+                return callback('error fetching ip from DB', null)
+            }
+        })
     })
+    
 }
 
 var notify = function (oldv, newv, host, ip, service, callback) {
     alert = thread('/usr/bin/node ./notify.js --host ' + host + ' --ip ' + ip + ' --old ' + oldv + ' --new ' + newv + ' --service ' + service, function (err, stdout) {
-        console.log(stdout)
+        //console.log(stdout)
         return callback(null)
     })
 }
 
 var db_update = function (data, callback) {
-     var dbase = mongo(gc.db.url + '/' + gc.platoon.region, [gc.platoon.cluster_id])
-     dbase.collection(gc.platoon.cluster_id).save({ ip : data.ip }, { upsert : true },  function (err, data) {
-        if (err) {
-            //db.close()
-            return callback(err)
-        } else {
-            //db.close()
-            return callback(null)
-        }
+    mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
+        dbase.collection(gc.platoon.cluster_id).save({ ip : data.ip }, { upsert : true },  function (err, data) {
+            if (err) {
+                dbase.close()
+                return callback(err)
+            } else {
+                dbase.close()
+                return callback(null)
+            }
+         })
      })
+     
 }
 
 var inspect_data = function (strdata, callback) {
     try {
-        var data = JSON.parse(strdata)
+        if (strdata == undefined) {
+            return callback(null)
+        } else {
+            var data = JSON.parse(strdata)
+        }
     } catch (e) {
         log(e)
         return callback(e)
     }
-    var dbase = mongo(gc.db.url + '/' + gc.platoon.region, [gc.platoon.cluster_id])
-    dbase.collection(gc.platoon.cluster_id).find({ ip : data.ip }).toArray(function (err, olddata) {
-        if (err) {
-            log(err)
-            return callback(err)
-        } else {
-            olddata = olddata[0]
-            for (s = 0; s < data.services.length; s++) {
-                try {
-                    if (data.services[s].status != olddata.services[s].status) {
-                        notify(olddata.services[s].status, data.services[s].status, data.hostname, data.ip, data.services[s].name, function (err) {
-                            if (err) {
-                                log(err)
-                            }
-                        })
+    mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
+        dbase.collection(gc.platoon.cluster_id).find({ ip : data.ip }).toArray(function (err, olddata) {
+            if (err) {
+                log(err)
+                return callback(err)
+            } else {
+                olddata = olddata[0]
+                for (s = 0; s < data.services.length; s++) {
+                    try {
+                        if (data.services[s].status != olddata.services[s].status) {
+                            notify(olddata.services[s].status, data.services[s].status, data.hostname, data.ip, data.services[s].name, function (err) {
+                                if (err) {
+                                    log(err)
+                                }
+                            })
+                        }
+                    } catch (e) {
+                        // if old status doesn't exist (ie, new service) go to the next iteration
+                        continue
                     }
-                } catch (e) {
-                    // if old status doesn't exist (ie, new service) go to the next iteration
-                    continue
                 }
+                dbase.collection(gc.platoon.cluster_id).update({ ip : data.ip }, data, { $upsert : true }, function (err) {
+                    dbase.close()
+                    if (err) {
+                        log(err)
+                        return callback(err)
+                    } else {
+                        return callback(null)
+                    }
+                })
             }
-            dbase.collection(gc.platoon.cluster_id).update({ ip : data.ip }, data, { $upsert : true }, function (err) {
-                //dbase.close()
-                if (err) {
-                    log(err)
-                    return callback(err)
-                } else {
-                    return callback(null)
-                }
-            })
-        }
-    })   
+        })
+    })
+       
 }
 
 log('Started cluster health check loop in ' + (process.hrtime(startup_start)[1] / 1000000).toFixed(2) + 'ms')
-async.forever(
-    function (next) {
-        load_config()
-        var stime = process.hrtime()
-        var dbase = mongo(gc.db.url + '/' + gc.platoon.region, [gc.platoon.cluster_id])
-        dbase.collection(gc.platoon.cluster_id).find(function (err, data) {
-            if (err) {
-                //dbase.close()
-                log(err)
-            } else {
-                //dbase.close()
-                for (i = 0; i < data.length; i++) {
-                    get_healthcheck(data[i], function (err, data) {
-                        if (err) {
-                            log(err)
-                            next()
-                        } else {
-                            inspect_data(data, function (err) {
-                                sleeper (stime, function () {
-                                    next()
+
+mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
+    async.forever(
+        function (next) {
+            load_config()
+            var stime = process.hrtime()
+            dbase.collection(gc.platoon.cluster_id).find().toArray(function (err, data) {
+                if (err) {
+                    ////dbase.close()
+                    log(err)
+                } else {
+                    ////dbase.close()
+                    for (i = 0; i < data.length; i++) {
+                        get_healthcheck(data[i], function (err, data) {
+                            if (err) {
+                                log(err)
+                                next()
+                            } else {
+                                inspect_data(data, function (err) {
+                                    sleeper (stime, function () {
+                                        next()
+                                    })
                                 })
-                            })
-                        }
-                    })
+                            }
+                        })
+                    }
                 }
+            })
+        }, function (err) {
+            if (err) {
+                log(err)
+                next()
             }
-        })
-    }, function (err) {
-        if (err) {
-            log(err)
-            next()
         }
-    }
-)
+    )
+})
+    
+

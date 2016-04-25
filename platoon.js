@@ -21,7 +21,8 @@ var application_root = __dirname,
     methodOverride = require('method-override'),
     request = require('request'),
     thread = require('child_process').spawn,
-    mongo = require('mongojs'),
+    //mongo = require('mongojs'),
+    mongo = require('mongodb').MongoClient,
     process = require('process'),
     sleep = require('sleep'),
     cmd = require('exec-sync')
@@ -30,8 +31,8 @@ var application_root = __dirname,
 var startup_start = process.hrtime() // start the spool up timer
 var app = express();
 var gc = ini.parse(fs.readFileSync('platoon.conf', 'utf-8'))
-dbase = mongo(gc.db.url + '/' + gc.platoon.region, [gc.platoon.cluster_id])
-cluster_db = mongo(gc.db.url + '/cluster')
+//dbase = mongo.connect(gc.db.url + '/' + gc.platoon.region)
+//cluster_db = mongo.connect(gc.db.url + '/cluster')
 
 ////////////////////////////////////////////////////////// ALLOW XSS / CORS
 var allowCrossDomain = function(req, res, next) {
@@ -100,16 +101,18 @@ var startup = function (callback) {
     host_data.hostname = cmd('hostname')
     host_data.port = gc.global.port
     host_data.region = gc.platoon.region
-    host_data.cluster_id = gc.platoon.cluster_id 
-    cluster_db.collection('servers').update({ip: host_data.ip}, host_data, {upsert : true}, function (err) {
-        if (err) {
-            cluster_db.close()
-            return callback(err)
-        } else {
-            cluster_db.close()
-            return callback(null)
-        }
-    })
+    host_data.cluster_id = gc.platoon.cluster_id
+    mongo.connect(gc.db.url + '/cluster', function (err, cluster_db) {
+        cluster_db.collection('servers').update({ip: host_data.ip}, host_data, {upsert : true}, function (err) {
+            if (err) {
+                cluster_db.close()
+                return callback(err)
+            } else {
+                cluster_db.close()
+                return callback(null)
+            }
+        })
+    }) 
 }
 
 var get_hostname = function () {
@@ -133,78 +136,84 @@ var get_status = function (callback) {
     var ok = 0
     var err = 0
     var down = []
-    dbase.collection(gc.platoon.cluster_id).find(function (err, data) {
-        //dbase.close()
-        if (err) {
-            log(err)
-            //dbase.close()
-            return callback(err)
-        } else {
-            //dbase.close()
-            if (data.length < 1) {
-                return callback(null, '{}')
+    mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
+        dbase.collection(gc.platoon.cluster_id).find().toArray(function (err, data) {
+            dbase.close()
+            if (err) {
+                log(err)
+                dbase.close()
+                return callback(err)
             } else {
-                for (i = 0; i < data.length; i++) {
-                    status.members.push(data[i])
-                    var downsvc = 0
-                    for (s = 0; s < data[i].services.length; s++) {
-                        if (data[i].services[s].status == 'ok') {
-                            ok++
-                        } else {
-                            err++
-                            downsvc++
+                dbase.close()
+                if (data.length < 1) {
+                    return callback(null, '{}')
+                } else {
+                    for (i = 0; i < data.length; i++) {
+                        status.members.push(data[i])
+                        var downsvc = 0
+                        for (s = 0; s < data[i].services.length; s++) {
+                            if (data[i].services[s].status == 'ok') {
+                                ok++
+                            } else {
+                                err++
+                                downsvc++
+                            }
+                        }
+                        if (downsvc > 0) {
+                            down.push(data[i].hostname)
                         }
                     }
-                    if (downsvc > 0) {
-                        down.push(data[i].hostname)
+                    status.down = down
+                    status.pct = (100 - ((down.length / data.length ) * 100))
+                    if (down.length == data.length) {
+                        status.quorum = false
                     }
+                    else if (down.length < data.length && (100 - (down.length / data.length) * 100) <= gc.platoon.quorum) {
+                        status.quorum = false
+                    } else {
+                        status.quorum = true
+                    }
+                    status.quorum_target = Number(gc.platoon.quorum)
+                    status.tot_members = data.length
+                    status.down_members = down.length
+                    status.svc_ok = ok
+                    status.svc_err = err
+                    status.region = gc.platoon.region
+                    status.cluster_id = gc.platoon.cluster_id
+                    return callback(null, status)
                 }
-                status.down = down
-                status.pct = (100 - ((down.length / data.length ) * 100))
-                if (down.length == data.length) {
-                    status.quorum = false
-                }
-                else if (down.length < data.length && (100 - (down.length / data.length) * 100) <= gc.platoon.quorum) {
-                    status.quorum = false
-                } else {
-                    status.quorum = true
-                }
-                status.quorum_target = Number(gc.platoon.quorum)
-                status.tot_members = data.length
-                status.down_members = down.length
-                status.svc_ok = ok
-                status.svc_err = err
-                status.region = gc.platoon.region
-                status.cluster_id = gc.platoon.cluster_id
-                return callback(null, status)
             }
-        }
+        })
     })
 }
 
 var db = function () {
     this.checkIn = function (data, gc, callback) {
-        dbase.collection(gc.platoon.cluster_id).update({ ip : data.ip}, data, { upsert : true }, function (err) {
-            if (err) {
-                //dbase.close()
-                log(err)
-                return callback(err)
-            } else {
-                //dbase.close()
-                return callback(null)
-            }
+        mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
+            dbase.collection(gc.platoon.cluster_id).update({ ip : data.ip}, data, { upsert : true }, function (err) {
+                if (err) {
+                    dbase.close()
+                    log(err)
+                    return callback(err)
+                } else {
+                    dbase.close()
+                    return callback(null)
+                }
+            })
         })
     }
     this.findAll = function (gc, callback) {
-        dbase.collection(gc.platoon.cluster_id).find(function (err, data) {
-            if (err) {
-                //dbase.close()
-                log(err) 
-                return callback(err)
-            } else {
-                //dbase.close()
-                return callback(null, data)
-            }
+        mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
+            dbase.collection(gc.platoon.cluster_id).find().toArray(function (err, data) {
+                if (err) {
+                    dbase.close()
+                    log(err) 
+                    return callback(err)
+                } else {
+                    dbase.close()
+                    return callback(null, data)
+                }
+            })
         })
     }
 }
@@ -226,7 +235,7 @@ app.get('/status', function (req, res) {
 ////////////////////////////////////////////////////////// SAWN PROCESSES
 // healthcheck loop
 var hctime = process.hrtime()
-var healthcheck_loop = thread('/usr/bin/forever', ['healthcheck.js', '--minUptime=0ms'])
+var healthcheck_loop = thread('/usr/bin/nodemon', ['healthcheck.js', '--minUptime=0ms'])
 healthcheck_loop.stdout.on('data', function (stdoutlog) {
     console.log(stdoutlog.toString())
 })

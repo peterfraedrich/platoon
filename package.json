@@ -30,6 +30,7 @@
     "async": "~2.0.0",
     "minimist": "~1.2.0",
     "sync": "~0.2.5",
-    "exec-sync": "~0.1.6"
+    "exec-sync": "~0.1.6",
+    "mongodb": "~2.1.16"
   }
 }
