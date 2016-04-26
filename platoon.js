@@ -2,7 +2,7 @@
 
 /*
     TODO:
-    switch from MONGOJS to MONGODB driver, this will allow for consistent db socket open/closing
+    
 
 */
 
@@ -21,7 +21,6 @@ var application_root = __dirname,
     methodOverride = require('method-override'),
     request = require('request'),
     thread = require('child_process').spawn,
-    //mongo = require('mongojs'),
     mongo = require('mongodb').MongoClient,
     process = require('process'),
     sleep = require('sleep'),
@@ -232,7 +231,7 @@ app.get('/status', function (req, res) {
     })
 })
 
-////////////////////////////////////////////////////////// SAWN PROCESSES
+////////////////////////////////////////////////////////// SPAWN PROCESSES
 // healthcheck loop
 var hctime = process.hrtime()
 var healthcheck_loop = thread('/usr/bin/nodemon', ['healthcheck.js', '--minUptime=0ms'])

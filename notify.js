@@ -4,9 +4,11 @@ var fs = require('fs'),
     request = require('request'),
     process = require('process'),
     ini = require('ini'),
-    argv = require('minimist')(process.argv.slice(2))
+    argv = require('minimist')(process.argv.slice(2)),
+    thread = require('child_process').spawn,
+    async = require('async')
 
-var startup_start = process.hrtime() // start the spool up timer
+var stime = process.hrtime() // start the spool up timer
 var gc = ini.parse(fs.readFileSync('platoon.conf', 'utf-8'))
 
 var ts = function () {
@@ -34,81 +36,63 @@ var log = function (msg) {
 }
 
 var load_channels = function () {
+    /*
+        gets the list of notifier scripts from the ./notifiers folder and filters out
+        files that are not script / known extensions. currently supports js, python, 
+        shell, and perl.
+    */
+    var scripts = []
     try {
-        return fs.readdirSync('./notifiers')
+        var files = fs.readdirSync('./notifiers')
+        for (i = 0; i < files.length; i++) {
+            // allow only files with script / known extensions; this should cover most cases
+            if (files[i].split('.')[1] == 'js' || 
+                files[i].split('.')[1] == 'sh' ||
+                files[i].split('.')[1] == 'py' ||
+                files[i].split('.')[1] == 'pl') 
+            {
+                scripts.push(files[i])
+            }
+        }
+        return scripts
     } catch (e) {
         log(e)
         return []
     }
 }
 
-var type_slack = function (argv, webhook, callback) {
-    try {
-        if (argv.new == 'ok') {
-            color = "#36A64F"
-        } else if (argv.new == 'err') {
-            color = "#CC0000"
-        } else {
-            color = "#AAAAAA"
-        }
-        msg = '*HOST:* ' + argv.host + '\n' + '*IP:* ' + argv.ip + '\n' + '*SERVICE:* ' + argv.service + '\n' + '*TIME:* ' + ts()
-        var payload = {
-            attachments : [
-                {
-                    fallback : "Service [" + argv.service + "] on host " + argv.host + " changed state from " + argv.old + " to " + argv.new,
-                    pretext : "Service state change on *" + argv.host.toUpperCase() + "*",
-                    title: argv.service.toUpperCase() + ' | ' + argv.new.toUpperCase(),
-                    color: color,
-                    text: msg,
-                    mrkdwn_in : [
-                        "text",
-                        "pretext"
-                    ]
-                }
-            ]
-        }
-        var options = {
-            headers: {'content-type' : 'application/json'},
-            json: payload,
-            url: webhook,
-            from: JSON.stringify({ "text " : msg}),
-            timeout: 2000
-        }
-        request.post(options, function (err, res, body) {
-            if (!err) {
-                return callback(null)
-            } else {
-                log(err)
-                return callback(err)
-            }
-        })
-    }
-    catch (e) {
-        log(e)
-        return callback(e)
-    }
-}
+var channels = load_channels() // get our notification channels from the ./notifiers directory
 
-var notify = function (args, filename, callback) {
-    var fname = './notifiers/' + filename
-    var svc = JSON.parse(fs.readFileSync(fname, 'utf-8'))
-    if (svc.type.toLowerCase() == 'slack') {
-        type_slack(args, svc.url, function (err) {
-            if (err) {
-                log(err)
-                return callback(err)
-            } else {
-                return callback(null)
-            }
-        })
+async.each(channels, function (c, callback) {
+    /*
+        Spawns a child_process.spawn thread for each notifier script
+        and passes informaton as env vars, accesible through
+        process.env.VARIABLE_NAME
+    */
+    var opts = { 
+        ip : argv.ip, 
+        hostname : argv.hostname, 
+        oldvalue : argv.oldvalue, 
+        newvalue : argv.newvalue, 
+        service : argv.service, 
+        clusterid : gc.platoon.cluster_id, 
+        region : gc.platoon.region
     }
-}
-
-var channels = load_channels()
-for (c = 0; c < channels.length; c++) {
-    notify(argv, channels[c], function (err) {
-        if (err) {
-            log(err)
-        }
+    var t = thread('./notifiers/' + c, [], {env : opts} ) // spawn thread
+    t.stderr.on('data', function (data) {
+        log(data.toString()) // log errors
     })
-}
+    t.stdout.on('data', function (data) {
+        log(data.toString()) // log outputs
+    })
+    t.on('close', function(code) {
+        return callback() // return when process exits
+    })
+
+}, function () {
+    // post notifier stuff.
+    log('Completed notifications in ' + (process.hrtime(stime)[1] / 1000000).toFixed(2) + 'ms.')
+    process.exit(0) // exit
+})
+
+// EOF
