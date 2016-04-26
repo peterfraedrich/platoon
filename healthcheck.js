@@ -4,7 +4,7 @@ var ini = require('ini'),
     mongo = require('mongodb').MongoClient,
     http = require('http'),
     bodyParser = require('body-parser'),
-    request = require('request'),
+    request = require('sync-request'),
     process = require('process'),
     sleep = require('sleep'),
     fs = require('fs'),
@@ -59,12 +59,11 @@ var sleeper = function (stime, callback) {
 var get_healthcheck = function (host, callback) {
     try {
         options = {
-            url : 'http://' + host.ip + ':' + gc.agent.port + '/healthcheck',
-            forever : false
+            url : 'http://' + host.ip + ':' + gc.agent.port + '/healthcheck'
+            //forever : false
         }
-        request.get(options, function (err, res, body) {
-            return callback(null, body)
-        })
+        var res = request('GET', options.url)
+        return callback(null, res.body.toString())
     } catch (e) {
         return callback(e)
     }
@@ -86,8 +85,14 @@ var get_last_checkin = function (svc, callback) {
 }
 
 var notify = function (oldv, newv, host, ip, service, callback) {
-    alert = thread('/usr/bin/node ./notify.js --host ' + host + ' --ip ' + ip + ' --old ' + oldv + ' --new ' + newv + ' --service ' + service, function (err, stdout) {
-        //console.log(stdout)
+    var t = thread('/usr/bin/node ./notify.js --host ' + host + ' --ip ' + ip + ' --old ' + oldv + ' --new ' + newv + ' --service ' + service)
+    t.stdout.on('data', function (data) {
+        log(data.toString())
+    })
+    t.stderr.on('data', function (data) {
+        log(data.toString())
+    })
+    t.on('close', function (code) {
         return callback(null)
     })
 }
@@ -112,7 +117,8 @@ var inspect_data = function (strdata, callback) {
         if (strdata == undefined) {
             return callback(null)
         } else {
-            var data = JSON.parse(strdata)
+            return callback(strdata)
+            //var data = JSON.parse(strdata)
         }
     } catch (e) {
         log(e)
@@ -126,6 +132,7 @@ var inspect_data = function (strdata, callback) {
             } else {
                 olddata = olddata[0]
                 for (s = 0; s < data.services.length; s++) {
+                    //console.log(data.services[s])
                     try {
                         if (data.services[s].status != olddata.services[s].status) {
                             notify(olddata.services[s].status, data.services[s].status, data.hostname, data.ip, data.services[s].name, function (err) {
@@ -163,18 +170,16 @@ mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
             var stime = process.hrtime()
             dbase.collection(gc.platoon.cluster_id).find().toArray(function (err, data) {
                 if (err) {
-                    ////dbase.close()
                     log(err)
                 } else {
-                    ////dbase.close()
-                    for (i = 0; i < data.length; i++) {
-                        get_healthcheck(data[i], function (err, data) {
+                    for (d = 0; d < data.length; d++) {
+                        get_healthcheck(data[d], function (err, hdata) {
                             if (err) {
                                 log(err)
                                 next()
                             } else {
-                                inspect_data(data, function (err) {
-                                    sleeper (stime, function () {
+                                inspect_data(hdata, function (err) {
+                                    sleeper(stime, function (err) {
                                         next()
                                     })
                                 })

@@ -81,7 +81,7 @@ async.each(channels, function (c, callback) {
     var t = thread('./notifiers/' + c, [], {env : opts} ) // spawn thread
     t.stderr.on('data', function (data) {
         log(data.toString()) // log errors
-    })
+    })  
     t.stdout.on('data', function (data) {
         log(data.toString()) // log outputs
     })
