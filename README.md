@@ -17,24 +17,23 @@ The Platoon server is the brain of the micro-cluster. The server initiates the h
 
 The configuration for the Platoon server is found in `platoon.conf` of the root application folder and looks something like this:
 ```ini
-[global]
-port = 5000
-log = platoon.log
+[global]                        
+port = 5000                     # the port the Platoon server API will listen on
+log = platoon.log               # the Platoon logfile location. can be a path (eg, /var/log/platoon.log)
 
 [db]
-url = mongodb://<db_ip>:27017
-port = 27017
+url = mongodb://<db_ip>:27017   # the DB URL
+port = 27017                    # the DB port
 
 [platoon]
-region = as_b
-cluster_id = dev
-check_interval = 5
-quorum = 60
+region = as_b                   # 
+cluster_id = dev                #
+check_interval = 5              # how often the server polls the agents, in seconds.
+quorum = 60                     # the % of error-free hosts for the cluster to be healthy
 
 [agent]
-port = 5001
+port = 5001                     # the port the agents in the cluster are listening on
 
 [misc]
-downtime_alerts = false
+downtime_alerts = false         # send downtime alerts for hosts that don't respond
 ```
-
