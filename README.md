@@ -79,7 +79,7 @@ http://<server>:<port>/status
 ```
 
 Example result of `/status` :
-```JSON
+```python
 {
   "members": [                         # list of members
     {
