@@ -71,9 +71,9 @@ async.each(channels, function (c, callback) {
     */
     var opts = { 
         ip : argv.ip, 
-        hostname : argv.hostname, 
-        oldvalue : argv.oldvalue, 
-        newvalue : argv.newvalue, 
+        hostname : argv.host, 
+        oldvalue : argv.old, 
+        newvalue : argv.new, 
         service : argv.service, 
         clusterid : gc.platoon.cluster_id, 
         region : gc.platoon.region

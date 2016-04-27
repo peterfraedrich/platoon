@@ -27,7 +27,7 @@ var type_slack = function (argv, webhook, callback) {
         } else {
             color = "#AAAAAA"
         }
-        msg = '*HOST:* ' + argv.hostname + '\n' + '*IP:* ' + argv.ip + '\n' + '*SERVICE:* ' + argv.service + '\n' + '*TIME:* ' + ts()
+        msg = '*DOMAIN:* `' + argv.hostname + '.' + argv.clusterid + '.' + argv.region + '`\n' + '*IP:* ' + argv.ip + '\n' + '*SERVICE:* ' + argv.service + '\n' + '*TIME:* ' + ts() 
         var payload = {
             attachments : [
                 {

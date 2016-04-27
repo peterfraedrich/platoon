@@ -117,8 +117,8 @@ var inspect_data = function (strdata, callback) {
         if (strdata == undefined) {
             return callback(null)
         } else {
-            return callback(strdata)
-            //var data = JSON.parse(strdata)
+            //var data = strdata
+            var data = JSON.parse(strdata)
         }
     } catch (e) {
         log(e)
@@ -132,7 +132,6 @@ var inspect_data = function (strdata, callback) {
             } else {
                 olddata = olddata[0]
                 for (s = 0; s < data.services.length; s++) {
-                    //console.log(data.services[s])
                     try {
                         if (data.services[s].status != olddata.services[s].status) {
                             notify(olddata.services[s].status, data.services[s].status, data.hostname, data.ip, data.services[s].name, function (err) {
@@ -142,6 +141,7 @@ var inspect_data = function (strdata, callback) {
                             })
                         }
                     } catch (e) {
+                        log(e)
                         // if old status doesn't exist (ie, new service) go to the next iteration
                         continue
                     }
