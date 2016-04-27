@@ -78,7 +78,7 @@ http://<server>:<port>/status
 # gets the cluster status, returns JSON object
 ```
 
-Example:
+Example result of `/status` :
 ```JSON
 {
   "members": [
