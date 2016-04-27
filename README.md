@@ -63,3 +63,48 @@ Platoon server has provided a `Slack` notifier in the `./notifiers/` folder. Rep
 
 **IMPORTANT** Unless you wish to spawn unnecessary threads ensure that your scripts terminate when they are done! The thread will wait for the script to exit before closing, so if your script never exits the thread will stay open!
 
+#### REST API
+
+The Platoon server has a build-in RESTful API for adding and removing cluster members programmatically and getting the overall cluster health.
+
+**http://<server>:<port>/add?ip=[member_ip_address]** -- adds a member to the cluster, returns HTTP status code
+
+**http://<server>:<port>/remove?ip=p[member_ip_address]** -- removes a member from the cluster, returns HTTP status code
+
+**http://<server>:<port>/status** -- gets the cluster status, returns JSON object
+Example:
+```JSON
+{
+  "members": [
+    {
+      "_id": "5714fd79a987615718311f5c",
+      "ip": "96.118.61.47",
+      "hostname": "cluster-member4",
+      "services": [
+        {
+          "name": "test.sh",
+          "status": "err",
+          "ms": "8.66"
+        }
+      ],
+      "ms": "9.32"
+    }
+  ],
+  "down": [
+    "cluster-member1"
+  ],
+  "pct": 0,
+  "quorum": false,
+  "quorum_target": 60,
+  "tot_members": 1,
+  "down_members": 1,
+  "svc_ok": 0,
+  "svc_err": 1,
+  "region": "as_b",
+  "cluster_id": "dev"
+}
+```
+
+## FAQ
+
+* ****
