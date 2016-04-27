@@ -59,5 +59,7 @@ clusterid       # the name of the cluster the host belongs to
 
 Any output from the script, either to `stdout` or `stderr` will be logged in the server logs.
 
+Platoon server has provided a `Slack` notifier in the `./notifiers/` folder. Replace the `slack_webhook` value with the appropriate webhook URL.
+
 **IMPORTANT** Unless you wish to spawn unnecessary threads ensure that your scripts terminate when they are done! The thread will wait for the script to exit before closing, so if your script never exits the thread will stay open!
 

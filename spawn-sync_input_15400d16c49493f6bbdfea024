@@ -1,1 +1,0 @@
-["/usr/bin/node",["/platoon/node_modules/sync-request/lib/worker.js"],{"input":"{\"method\":\"GET\",\"url\":\"http://96.118.61.47:5001/healthcheck\"}"}]
