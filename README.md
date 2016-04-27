@@ -81,33 +81,33 @@ http://<server>:<port>/status
 Example result of `/status` :
 ```JSON
 {
-  "members": [
+  "members": [                         # list of members
     {
-      "_id": "5714fd79a987615718311f5c",
-      "ip": "96.118.61.47",
-      "hostname": "cluster-member4",
-      "services": [
+      "_id": 12345",
+      "ip": "192.168.1.1",              # member IP
+      "hostname": "cluster-member4",    # member hostname
+      "services": [                     # member's services
         {
-          "name": "test.sh",
-          "status": "err",
-          "ms": "8.66"
+          "name": "test.sh",            # service name
+          "status": "err",              # service status (ERR | OK)
+          "ms": "8.66"                  # elapsed time for service check
         }
       ],
-      "ms": "9.32"
+      "ms": "9.32"                      # elapsed time for all service checks
     }
   ],
-  "down": [
+  "down": [                             # list of hosts that have 1 service reporting err
     "cluster-member1"
   ],
-  "pct": 0,
-  "quorum": false,
-  "quorum_target": 60,
-  "tot_members": 1,
-  "down_members": 1,
-  "svc_ok": 0,
-  "svc_err": 1,
-  "region": "as_b",
-  "cluster_id": "dev"
+  "pct": 0,                             # percent of host that are 'up'
+  "quorum": false,                      # quorum boolean
+  "quorum_target": 60,                  # quorum target percentage
+  "tot_members": 1,                     # total members in the cluster
+  "down_members": 1,                    # number of memebrs that are 'down'
+  "svc_ok": 0,                          # number services that are 'ok'
+  "svc_err": 1,                         # number of services that are 'err'
+  "region": "as_b",                     # cluster region
+  "cluster_id": "dev"                   # cluster id
 }
 ```
 
