@@ -13,6 +13,7 @@ var ini = require('ini'),
     thread_sync = require('child_process').execSync,
     sync = require('sync')
 
+// load configs and start stuff
 var startup_start = process.hrtime() // start the spool up timer
 var gc = ini.parse(fs.readFileSync('platoon.conf', 'utf-8'))
 
@@ -48,6 +49,10 @@ var log = function (msg) {
 }
 
 var sleeper = function (stime, callback) {
+    /*
+        sleeps for difference between processing time and timeout in config
+        so that time between checks is consistent
+    */
     if ((process.hrtime(stime)[0]) < (gc.platoon.check_interval)) {
         var diff = (gc.platoon.check_interval) - (process.hrtime(stime)[0]) 
         log('Health check loop took ' + (process.hrtime(stime)[1] / 1000000).toFixed(2) + ' ms to run, sleeping for ' + diff.toFixed(2) +  's.')
@@ -57,6 +62,9 @@ var sleeper = function (stime, callback) {
 }
 
 var get_healthcheck = function (host, callback) {
+    /*
+        polls healthcheck data from the cluster members, sync
+    */
     try {
         options = {
             url : 'http://' + host.ip + ':' + gc.agent.port + '/healthcheck',
@@ -70,6 +78,10 @@ var get_healthcheck = function (host, callback) {
 }
 
 var get_last_checkin = function (svc, callback) {
+    /*
+        gets the last checkin data from the db to compare
+        to the current checkin data
+    */
     mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
         dbase.collection(gc.platoon.cluster_id).find({ "ip" : svc.ip}).toArray(function (err, data) {
             if (!err) {
@@ -85,6 +97,15 @@ var get_last_checkin = function (svc, callback) {
 }
 
 var notify = function (oldv, newv, host, ip, service, callback) {
+    /*
+        starts the 'notify.js' process in a new thread and passes
+        the following info:
+        hostname
+        IP
+        last checkin (oldv)
+        current checkin (newv)
+        service name (service)
+    */
     var t = thread('/usr/bin/node ./notify.js --host ' + host + ' --ip ' + ip + ' --old ' + oldv + ' --new ' + newv + ' --service ' + service)
     t.stdout.on('data', function (data) {
         log(data.toString())
@@ -98,6 +119,9 @@ var notify = function (oldv, newv, host, ip, service, callback) {
 }
 
 var db_update = function (data, callback) {
+    /*
+        updates the DB with the newest checkin data
+    */
     mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
         dbase.collection(gc.platoon.cluster_id).save({ ip : data.ip }, { upsert : true },  function (err, data) {
             if (err) {
@@ -113,6 +137,9 @@ var db_update = function (data, callback) {
 }
 
 var inspect_data = function (strdata, callback) {
+    /*
+        compares old vs new data and sends notification of any differences
+    */
     try {
         if (strdata == undefined) {
             return callback(null)
@@ -164,6 +191,16 @@ var inspect_data = function (strdata, callback) {
 log('Started cluster health check loop in ' + (process.hrtime(startup_start)[1] / 1000000).toFixed(2) + 'ms')
 
 mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
+    /*
+        this is the main loop.
+        -> load config from file
+        -> set the loop timestamp
+        -> get all hosts in the cluster
+        -> iterate over the hosts and run get_healthcheck()
+            -> if host is down and config allows it, send down notification
+        -> sleep for n seconds
+        -> repeat
+    */
     async.forever(
         function (next) {
             load_config()
@@ -172,28 +209,22 @@ mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
                 if (err) {
                     log(err)
                 } else {
-                    /*
-                    for (d = 0; d < data.length; d++) {
-                        get_healthcheck(data[d], function (err, hdata) {
-                            if (err) {
-                                log(err + ' [ ' + data[d].ip + ', ' + data[d].hostname + ' ] ')
-                                sleeper(stime, function (err) {
-                                        next()
-                                    })
-                            } else {
-                                inspect_data(hdata, function (err) {
-                                    sleeper(stime, function (err) {
-                                        next()
-                                    })
-                                })
-                            }
-                        })
-                    }*/
                     async.each(data, function (d, enext) {
                         get_healthcheck(d, function (err, hdata) {
                             if (err) {
-                                log(err + ' [ ' + d.ip + ', ' + d.hostname + ' ] ')
-                                enext()
+                                // send notifications if host is down & config allows it
+                                if (err == 'Error: connect ECONNREFUSED' && gc.misc.downtime_alerts == true) {
+                                    notify('UNKNOWN', 'ERR', d.hostname, d.ip, 'HOST_IS_DOWN', function (e) {
+                                        log(err + ' [ ' + d.ip + ', ' + d.hostname + ' ] ')
+                                        if (e) {
+                                            log(e)
+                                        }
+                                        enext()
+                                    })
+                                } else {
+                                    log(err + ' [ ' + d.ip + ', ' + d.hostname + ' ] ')
+                                    enext()
+                                }
                             } else {
                                 inspect_data(hdata, function (err) {
                                     if (err) {
@@ -225,4 +256,5 @@ mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
     )
 })
     
+
 

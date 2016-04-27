@@ -20,13 +20,14 @@ The configuration for the Platoon server is found in `platoon.conf` of the root 
 [global]                        
 port = 5000                     # the port the Platoon server API will listen on
 log = platoon.log               # the Platoon logfile location. can be a path (eg, /var/log/platoon.log)
+script_types = py,sh,pl,js      # comma-separated list of allowed script extensions for notifier scripts
 
 [db]
 url = mongodb://<db_ip>:27017   # the DB URL
 port = 27017                    # the DB port
 
 [platoon]
-region = as_b                   # unique region identifier, must be unique to the database
+region = as_b                   # region (top level) identifier, must be unique to the database
 cluster_id = dev                # cluster identifier, must be unique to that region
 check_interval = 5              # how often the server polls the agents, in seconds.
 quorum = 60                     # the % of error-free hosts for the cluster to be healthy
@@ -37,3 +38,7 @@ port = 5001                     # the port the agents in the cluster are listeni
 [misc]
 downtime_alerts = false         # send downtime alerts for hosts that don't respond
 ```
+
+#### Notifiers
+
+When the Platoon server detects that the state of a host/service has changed it will call the `notify.js` app in a new thread. The notify thread will run the scripts in the `./notifiers/` folder.

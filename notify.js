@@ -46,11 +46,8 @@ var load_channels = function () {
         var files = fs.readdirSync('./notifiers')
         for (i = 0; i < files.length; i++) {
             // allow only files with script / known extensions; this should cover most cases
-            if (files[i].split('.')[1] == 'js' || 
-                files[i].split('.')[1] == 'sh' ||
-                files[i].split('.')[1] == 'py' ||
-                files[i].split('.')[1] == 'pl') 
-            {
+            var file = files[i].split('.')[1]
+            if (gc.global.script_types.indexOf(file) != -1) {
                 scripts.push(files[i])
             }
         }
