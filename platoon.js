@@ -287,17 +287,6 @@ healthcheck_loop.stderr.on('data', function (stderrlog) {
 })
 log('Started healthcheck service in ' + (process.hrtime(hctime)[1] / 1000000).toFixed(2) + 'ms')
 
-// heartbeat loop
-// var hbtime = process.hrtime()
-// var heartbeat_loop = thread('/usr/bin/forever', ['heartbeat.js', '--minUptime=0ms'])
-// heartbeat_loop.stdout.on('data', function (stdoutlog) {
-//     console.log(stdoutlog.toString().split('\n')[0])
-// })
-// heartbeat_loop.stderr.on('data', function (stderrlog) {
-//     console.log(stderrlog.toString().split('\n')[0])
-// })
-// log('Started heartbeat service in ' + (process.hrtime(hbtime)[1] / 1000000).toFixed(2) + 'ms')
-
 ////////////////////////////////////////////////////////// SERVER
 app.listen(gc.global.port, function (err) {
     if (err) {
