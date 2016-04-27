@@ -41,4 +41,18 @@ downtime_alerts = false         # send downtime alerts for hosts that don't resp
 
 #### Notifiers
 
-When the Platoon server detects that the state of a host/service has changed it will call the `notify.js` app in a new thread. The notify thread will run the scripts in the `./notifiers/` folder.
+When the Platoon server detects that the state of a host/service has changed it will call the `notify.js` app in a new thread. The notify thread will run the scripts in the `./notifiers/` folder that match the accepted `script_types` in `platoon.conf`. 
+
+The goal of the notifier scripts is to set and send custom notifications to your desired endpoints. This allows for the greatest flexibility in designing how you want to get notifications. 
+
+When designing your notifier script it is important to know what information is being passed to it. `notify.js` passes the following information to the script as environment variables:
+
+```ini
+ip              # ip address of the host that triggered the notification
+hostname        # hostname of the host
+service         # the name of the service that triggered the notification
+oldvalue        # the previous service state
+newvalue        # the new service state
+region          # the region the host belongs to
+clusterid       # the name of the cluster the host belongs to
+```
