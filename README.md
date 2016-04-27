@@ -67,12 +67,15 @@ Platoon server has provided a `Slack` notifier in the `./notifiers/` folder. Rep
 
 The Platoon server has a build-in RESTful API for adding and removing cluster members programmatically and getting the overall cluster health.
 
-```
-http://<server>:<port>/add?ip=[member_ip_address]** -- adds a member to the cluster, returns HTTP status code
+```shell
+http://<server>:<port>/add?ip=[member_ip_address]
+# adds a member to the cluster, returns HTTP status code
 
-http://<server>:<port>/remove?ip=p[member_ip_address]** -- removes a member from the cluster, returns HTTP status code
+http://<server>:<port>/remove?ip=p[member_ip_address]
+# removes a member from the cluster, returns HTTP status code
 
-http://<server>:<port>/status** -- gets the cluster status, returns JSON object
+http://<server>:<port>/status
+# gets the cluster status, returns JSON object
 ```
 
 Example:
