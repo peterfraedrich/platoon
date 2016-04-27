@@ -59,8 +59,8 @@ var sleeper = function (stime, callback) {
 var get_healthcheck = function (host, callback) {
     try {
         options = {
-            url : 'http://' + host.ip + ':' + gc.agent.port + '/healthcheck'
-            //forever : false
+            url : 'http://' + host.ip + ':' + gc.agent.port + '/healthcheck',
+            forever : false
         }
         var res = request('GET', options.url)
         return callback(null, res.body.toString())
@@ -172,11 +172,14 @@ mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
                 if (err) {
                     log(err)
                 } else {
+                    /*
                     for (d = 0; d < data.length; d++) {
                         get_healthcheck(data[d], function (err, hdata) {
                             if (err) {
-                                log(err)
-                                next()
+                                log(err + ' [ ' + data[d].ip + ', ' + data[d].hostname + ' ] ')
+                                sleeper(stime, function (err) {
+                                        next()
+                                    })
                             } else {
                                 inspect_data(hdata, function (err) {
                                     sleeper(stime, function (err) {
@@ -185,7 +188,32 @@ mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
                                 })
                             }
                         })
-                    }
+                    }*/
+                    async.each(data, function (d, enext) {
+                        get_healthcheck(d, function (err, hdata) {
+                            if (err) {
+                                log(err + ' [ ' + d.ip + ', ' + d.hostname + ' ] ')
+                                enext()
+                            } else {
+                                inspect_data(hdata, function (err) {
+                                    if (err) {
+                                        log(err + ' [ ' + hdata + ' ] ')
+                                    } else {
+                                        enext()
+                                    }
+                                })
+                            }
+                        })
+                    }, function (err) {
+                        if (err) {
+                            log(err)
+                        } else {
+                            sleeper(stime, function (err) {
+                                next()
+                            })
+                        }
+
+                    })
                 }
             })
         }, function (err) {

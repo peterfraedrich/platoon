@@ -231,6 +231,50 @@ app.get('/status', function (req, res) {
     })
 })
 
+app.post('/add', function (req, res) {
+    if (req.query.ip == undefined) {
+        res.sendStatus(400)
+    } else {
+        var data = {
+            ip: req.query.ip
+        }
+        mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
+            dbase.collection(gc.platoon.cluster_id).update({ ip : data.ip}, data, { upsert : true }, function (err) {
+                if (err) {
+                    dbase.close()
+                    log(err)
+                    res.sendStatus(500)
+                } else {
+                    dbase.close()
+                    res.sendStatus(200)
+                }
+            })
+        })
+    }
+})
+
+app.post('/remove', function (req, res) {
+    if (req.query.ip == undefined) {
+        res.sendStatus(400)
+    } else {
+        var data = {
+            ip: req.query.ip
+        }
+        mongo.connect(gc.db.url + '/' + gc.platoon.region, function (err, dbase) {
+            dbase.collection(gc.platoon.cluster_id).remove({ ip : data.ip }, function (err) {
+                if (err) {
+                    dbase.close()
+                    log(err)
+                    res.sendstatus(500)
+                } else {
+                    dbase.close()
+                    res.sendStatus(200)
+                }
+            })
+        })
+    }
+})
+
 ////////////////////////////////////////////////////////// SPAWN PROCESSES
 // healthcheck loop
 var hctime = process.hrtime()
