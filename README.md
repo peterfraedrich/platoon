@@ -113,4 +113,10 @@ Example result of `/status` :
 
 ## FAQ
 
-* ****
+* **What is "quorum"?**
+    
+    "Quorum" is the measure of the overall cluster health. For the quorum to be 'true', the percent of the total members that report no errors has to be greater than the quorum target. EX. if a cluster has 4 members with a target of 70%, and one member is reporting errors, then the cluster has a valid quorum (quorum = true) because 75% of the members are OK.
+
+* **What counts as a member reporting as error?**
+
+    For a member to be in error state it must have at least one service check fail. In the future 'non-critical' service checks will be implemented so that the member will not fail out if a non-critical service check fails, but for now all services should be considered critical.
