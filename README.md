@@ -26,8 +26,8 @@ url = mongodb://<db_ip>:27017   # the DB URL
 port = 27017                    # the DB port
 
 [platoon]
-region = as_b                   # 
-cluster_id = dev                #
+region = as_b                   # unique region identifier, must be unique to the database
+cluster_id = dev                # cluster identifier, must be unique to that region
 check_interval = 5              # how often the server polls the agents, in seconds.
 quorum = 60                     # the % of error-free hosts for the cluster to be healthy
 
