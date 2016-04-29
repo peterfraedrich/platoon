@@ -136,6 +136,20 @@ var db_update = function (data, callback) {
      
 }
 
+var sort_services = function (a, b) {
+    /*
+        sorts service array by name so that notification
+        tests line up correctly
+    */
+    if (a.name < b.name) {
+        return -1
+    } else if (a.name > b.name) {
+        return 1
+    } else {
+        return 0
+    }
+}
+
 var inspect_data = function (strdata, callback) {
     /*
         compares old vs new data and sends notification of any differences
@@ -158,6 +172,9 @@ var inspect_data = function (strdata, callback) {
                 return callback(err)
             } else {
                 olddata = olddata[0]
+                // sort objects so they dont sent erroneous alerts, inline because node is dumb
+                data.services.sort(function (a,b) { return sort_services(a,b) } )
+                olddata.services.sort(function (a,b) { return sort_services(a,b) } )
                 for (s = 0; s < data.services.length; s++) {
                     try {
                         if (data.services[s].status != olddata.services[s].status) {
